@@ -3,28 +3,39 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
-       http://www.springframework.org/schema/websocket
-       http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd"
->
-    <!--配置web相关-->
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task-3.2.xsd">
     <import resource="spring-service.xml"/>
-    <!--静态资源处理-->
-    <mvc:default-servlet-handler/>
+    <context:component-scan base-package="com.blog"/>
     <!--配置带有前缀和后缀的视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <!--注解解析器-->
-    <mvc:annotation-driven/>
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/user/index"/>
+            <mvc:exclude-mapping path="/user/registerPage"/>
+            <mvc:exclude-mapping path="/user/req"/>
+            <mvc:exclude-mapping path="/user/loginPage"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/forgetPage"/>
+            <mvc:exclude-mapping path="/user/forget"/>
+            <bean class="com.blog.global.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <task:annotation-driven/>
     <context:annotation-config/>
-    <context:component-scan base-package="com.blog"/>
+    <mvc:default-servlet-handler/>
+    <mvc:annotation-driven/>
 </beans>

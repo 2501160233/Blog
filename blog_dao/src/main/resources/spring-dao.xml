@@ -5,11 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-">
+       http://www.springframework.org/schema/context/spring-context.xsd">
     <!--配置数据库相关-->
     <!--自动扫描-->
-    <context:component-scan base-package="com.blog"/>
+    <context:component-scan base-package="com.blog.dao"/>
+    <context:annotation-config/>
 
     <!--声明使用db.properties文件-->
     <context:property-placeholder location="classpath:db.properties"/>
@@ -23,25 +23,25 @@
     </bean>
 
     <!--配置sqlSessionFactory-->
-    <!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-         <property name="dataSource" ref="dataSource"/>
-         <property name="typeAliasesPackage" value="com.poetry.entity"/>
-         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-         &lt;!&ndash;配置分页插件&ndash;&gt;
-         <property name="plugins">
-             <array>
-                 <bean class="com.github.pagehelper.PageInterceptor">
-                     <property name="properties">
-                         <value>helperDialect=mysql</value>
-                     </property>
-                 </bean>
-             </array>
-         </property>
-     </bean>-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.blog.domain"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--配置分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>helperDialect=mysql</value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
 
     <!--mapper和接口自动映射-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.poetry.dao"/>
+        <property name="basePackage" value="com.blog.dao"/>
     </bean>
 </beans>
