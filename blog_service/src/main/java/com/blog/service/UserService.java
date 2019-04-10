@@ -8,4 +8,6 @@ public interface UserService {
     int add(User record);
     User login(User user);
     User selectByEmail(String email);
+
+    User selectByUsername(String username);
 }

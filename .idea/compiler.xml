@@ -11,8 +11,5 @@
         <module name="blog_web" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="blogservice" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

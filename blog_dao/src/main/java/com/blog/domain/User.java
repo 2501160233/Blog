@@ -14,6 +14,8 @@ public class User {
     private String password;
     @Email
     private String email;
+    private Integer type;
+    private String image;
 
     @Override
     public String toString() {
@@ -22,6 +24,8 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", type=" + type +
+                ", image='" + image + '\'' +
                 '}';
     }
 
@@ -55,5 +59,21 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

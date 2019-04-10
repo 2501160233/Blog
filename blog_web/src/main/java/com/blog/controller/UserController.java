@@ -9,11 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 
 
 @Controller
@@ -28,13 +33,16 @@ public class UserController {
     }
 
     @RequestMapping("index")
-    public String index() {
+    public String index(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.getAttribute("userx");
         return "index";
     }
 
     //注册
-    @RequestMapping("/req")
-    public String register(@Valid User user, Errors errors, Model model, HttpServletRequest req) {
+    @RequestMapping(value = "/req", method = RequestMethod.POST)
+
+    public String register(@RequestParam("image") MultipartFile file, @Valid User user, Errors errors, Model model, HttpServletRequest req) throws IOException {
         System.out.println(user);
         System.out.println(req.getParameter("passwordAgain"));
         if (errors.getErrorCount() > 1) {
@@ -44,6 +52,21 @@ public class UserController {
         } else {
             model.addAttribute("errors", null);
             if (req.getParameter("passwordAgain") != null && req.getParameter("passwordAgain").equals(user.getPassword())) {
+                /*
+                 * 处理文件上传
+                 * 获取文件上传名字
+                 * */
+                String filename = file.getOriginalFilename();
+                String substring = filename.substring(filename.lastIndexOf('.'));
+                String realPath = req.getServletContext().getRealPath("/image");
+                //随机取一个名字
+                String newFileName = String.valueOf(System.currentTimeMillis()) + substring;
+                File file1 = new File(realPath, newFileName);
+                if (!file1.getParentFile().exists()) {
+                    file1.getParentFile().mkdirs();
+                }
+                file.transferTo(file1);
+                user.setImage(newFileName);
                 userService.add(user);
                 model.addAttribute("user", user);
                 return "login";
@@ -64,26 +87,11 @@ public class UserController {
     public String login(User user, Model model, HttpServletRequest req, HttpServletResponse resp) {
         System.out.println(user);
         if (userService.login(user) != null) {
+            HttpSession session = req.getSession();
+            User user1 = userService.selectByUsername(user.getUsername());
+            System.out.println(user1);
+            session.setAttribute("userx", user1);
             model.addAttribute("user", user);
-            if (req.getParameter("remember") != null) {
-                Cookie cookie = new Cookie("username", user.getUsername());
-                cookie.setMaxAge(60 * 60 * 24 * 7);
-                Cookie cookie1 = new Cookie("password", user.getPassword());
-                cookie1.setMaxAge(60 * 60 * 24 * 7);
-                resp.addCookie(cookie);
-                resp.addCookie(cookie1);
-            } else {
-                Cookie[] cookies = req.getCookies();
-                for (Cookie cookie : cookies) {
-                    if (cookie.getName().equals("username")) {
-                        cookie.setMaxAge(0);
-                        resp.addCookie(cookie);
-                    } else if (cookie.getName().equals("password")) {
-                        cookie.setMaxAge(0);
-                        resp.addCookie(cookie);
-                    }
-                }
-            }
             return "redirect:/user/index";
         } else {
             model.addAttribute("error", "密码或用户名不正确");
@@ -108,5 +116,12 @@ public class UserController {
             sendMail.sendMail(email, "极简博客提醒您:您的密码为:" + user.getPassword());
             return "redirect:loginPage";
         }
+    }
+
+    @RequestMapping("loginOut")
+    public String loginOut(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.removeAttribute("userx");
+        return "redirect:/user/index";
     }
 }

@@ -8,8 +8,8 @@
         <result column="email" jdbcType="VARCHAR" property="email"/>
     </resultMap>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.blog.domain.User" useGeneratedKeys="true">
-    insert into `user` (username,password,email)
-    values (#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR})
+    insert into `user` (username,password,email,image)
+    values (#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{image,jdbcType=VARCHAR})
   </insert>
     <select id="login" resultType="com.blog.domain.User">
         select * from `user`
@@ -17,5 +17,8 @@
     </select>
     <select id="selectByEmail" resultMap="BaseResultMap" parameterType="java.lang.String">
 select * from `user` where email=#{email}
+    </select>
+    <select id="selectByUsername" resultMap="BaseResultMap" parameterType="String">
+        select * from `user` where username=#{username}
     </select>
 </mapper>

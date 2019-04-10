@@ -10,4 +10,6 @@ public interface UserDao {
     User login(User user);
 
     User selectByEmail(String email);
+
+    User selectByUsername(String username);
 }

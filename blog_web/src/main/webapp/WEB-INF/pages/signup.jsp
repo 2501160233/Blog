@@ -25,7 +25,7 @@
             <p style="font-size: 20px;color: red">${error.defaultMessage}</p>
         </c:forEach>
     </h3>
-    <form action="/user/req" id="regForm" method="post">
+    <form action="/user/req" id="regForm" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>用户名</label>
             <input type="text" value="${users.username}" class="form-control" name="username" placeholder="请输入用户名">
@@ -41,6 +41,10 @@
         <div class="form-group">
             <label>邮箱</label>
             <input type="text" class="form-control" value="${users.email}" name="email" placeholder="请输入注册邮箱">
+        </div>
+        <div class="form-group">
+            <p>请上传头像照片</p>
+            <input type="file" name="image" id="image">
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">注册</button>
