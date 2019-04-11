@@ -20,17 +20,15 @@
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--配置文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--配置上传文件大小等参数,最大上传5MB文件-->
+        <property name="maxUploadSize" value="5242880"/>
+    </bean>
     <!--配置拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/user/index"/>
-            <mvc:exclude-mapping path="/user/registerPage"/>
-            <mvc:exclude-mapping path="/user/req"/>
-            <mvc:exclude-mapping path="/user/loginPage"/>
-            <mvc:exclude-mapping path="/user/login"/>
-            <mvc:exclude-mapping path="/user/forgetPage"/>
-            <mvc:exclude-mapping path="/user/forget"/>
             <bean class="com.blog.global.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

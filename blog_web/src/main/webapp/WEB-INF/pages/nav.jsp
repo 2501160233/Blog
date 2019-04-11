@@ -24,14 +24,12 @@
                     <li><a href="/user/loginPage">登录</a></li>
                 </c:if>
                 <c:if test="${sessionScope.userx!=null}">
-                    <li><img src="/image/${sessionScope.userx.image}" class="img-circle" style="width: 80px">
-                        <ul class="dropdown">
-                            <c:if test="${userx.type==1}">
-                                <li><a style="font-size: 20px;" href="/user/main">用户管理</a></li>
-                            </c:if>
-                            <li><a href="#" style="font-size: 20px;">个人中心</a></li>
-                            <li><a href="#" style="font-size: 20px;">我的博客</a></li>
-                        </ul>
+                    <li><a href="#" style="font-size: 15px; color: gold">${sessionScope.userx.image}</a>
+                            <%-- <ul class="dropdown">
+                                 <c:if test="${userx.type==1}">
+                                     <li><a style="font-size: 20px;" href="/user/main">用户管理</a></li>
+                                 </c:if>
+                             </ul>--%>
                     </li>
                 </c:if>
                 <li><a href="/user/registerPage">注册</a></li>
@@ -47,20 +45,19 @@
     </div>
 </div>
 <script>
-    window.onload = function () {
-        var user = document.getElementById("user");
-        var user0 = user.children[0];
-        var user1 = user.children[1];
-        var out1 = document.getElementById("out1");
-        console.log(user0.innerText);
-        if (user0.innerText !== '登录') {
-            user1.style.display = 'none';
-            out1.style.display = 'block';
-        } else {
-            out1.style.display = 'none';
-            user1.style.display = 'block';
-        }
+    var user = document.getElementById("user");
+    var user0 = user.children[0];
+    var user1 = user.children[1];
+    var out1 = document.getElementById("out1");
+    console.log(user0.innerText);
+    if (user0.innerText !== '登录') {
+        user1.style.display = 'none';
+        out1.style.display = 'block';
+    } else {
+        out1.style.display = 'none';
+        user1.style.display = 'block';
     }
+
 </script>
 </body>
 </html>

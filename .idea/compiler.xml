@@ -11,5 +11,11 @@
         <module name="blog_web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Blog" target="1.5" />
+      <module name="blog_dao" target="1.5" />
+      <module name="blog_service" target="1.5" />
+      <module name="blog_web" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
