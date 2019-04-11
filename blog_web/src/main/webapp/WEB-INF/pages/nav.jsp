@@ -25,9 +25,12 @@
                 </c:if>
                 <c:if test="${sessionScope.userx!=null}">
                     <li><a href="#" style="font-size: 15px; color: gold">${sessionScope.userx.image}</a>
-                            <%-- <ul class="dropdown">
+                            <%-- <ul class="mine">
                                  <c:if test="${userx.type==1}">
-                                     <li><a style="font-size: 20px;" href="/user/main">用户管理</a></li>
+                                     <li><a href="#">我的博客</a></li>
+                                     <li><a href="#">个人资料</a></li>
+                                     <li><a href="#">用户管理</a></li>
+                                     <li><a href="#">退出登录</a></li>
                                  </c:if>
                              </ul>--%>
                     </li>

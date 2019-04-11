@@ -6,9 +6,9 @@ document.body.appendChild(canvas);
 canvas.width = window.innerWidth-30;
 canvas.height = window.innerHeight-20;
 // 获取2d画布
-let ctx = canvas.getContext('2d');
+var ctx = canvas.getContext('2d');
 
-let mouse = {
+var mouse = {
     x: undefined,
     y: undefined,
 }
@@ -21,9 +21,9 @@ window.addEventListener('mousemove',function(event){
 });
 
 //圆的数组
-let circleArray = [];
+var circleArray = [];
 // 填充颜色
-let colorArray = [
+var colorArray = [
     '#ffffcc',
     '#ccffff',
     '#ffcccc',
@@ -37,12 +37,12 @@ let colorArray = [
 // 封装圆的制造过程
 function init(){
     //循环制造不同的圆，存进数组
-    for(let i=0;i<700;i++){
-        let x = Math.random()*innerWidth;// 横坐标
-        let y = Math.random()*innerHeight;// 纵坐标
-        let r = Math.random()*3+1; // 半径
-        let dx = Math.random()*1; // 横向平移距离
-        let dy = Math.random()*1; // 纵向平移距离
+    for(var i=0;i<1000;i++){
+        var x = Math.random()*innerWidth;// 横坐标
+        var y = Math.random()*innerHeight;// 纵坐标
+        var r = Math.random()*3+1; // 半径
+        var dx = Math.random()*1; // 横向平移距离
+        var dy = Math.random()*1; // 纵向平移距离
         circleArray.push(new Circle(x,y,r,dx,dy));
     }
 }
@@ -107,7 +107,7 @@ function animate() {
     // 橡皮擦函数 clearRect(x坐标,y坐标,宽度,高度)
     ctx.clearRect(0,0,innerWidth,innerHeight);
     // 循环刷新每个圆
-    for(let i=0;i<circleArray.length;i++){
+    for(var i=0;i<circleArray.length;i++){
         circleArray[i].update();
     }
 }
