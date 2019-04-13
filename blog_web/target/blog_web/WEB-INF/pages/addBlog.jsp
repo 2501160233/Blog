@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,30 +14,25 @@
 </head>
 <body>
 <jsp:include page="nav.jsp"/>
-
 <div class="AddBolg">
     <h3>添加博客</h3>
-    <form>
+    <form action="/blog/save" method="post" enctype="multipart/form-data">
         <label>博客标题</label>
-        <input type="text" required>
+        <input type="text" name="blog_title">
+        <label>摘要</label>
+        <input type="text" name="blog_min">
         <label>博客内容</label>
-        <textarea></textarea>
-        <div class="checkboxes">
-            <label>计算机</label>
-            <input type="checkbox" value="计算机">
-            <label>前端</label>
-            <input type="checkbox" value="前端">
-            <label>编程语言</label>
-            <input type="checkbox" value="编程语言">
-            <label>其他</label>
-            <input type="checkbox" value="其他">
-        </div>
-        <label>作者</label>
-        <input type="text" placeholder="">
-        <button>添加博客</button>
-
+        <textarea name="blog_content"></textarea>
+        <label>所属分类</label>
+        <select name="blog_class">
+            <option value="前端">前端</option>
+            <option value="后端">后端</option>
+            <option value="其他">其他</option>
+        </select>
+        <label>请上传照片</label>
+        <input type="file" name="images">
+        <button class="btn btn-primary btn-block" type="submit">提交</button>
     </form>
-
 </div>
 </body>
 </html>

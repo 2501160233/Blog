@@ -21,4 +21,7 @@ select * from `user` where email=#{email}
     <select id="selectByUsername" resultMap="BaseResultMap" parameterType="String">
         select * from `user` where username=#{username}
     </select>
+    <select id="selectAllUser" resultMap="BaseResultMap">
+        select * from `user`
+    </select>
 </mapper>

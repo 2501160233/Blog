@@ -1,9 +1,13 @@
 package com.blog.controller;
 
 
+import com.blog.domain.Blog;
 import com.blog.domain.SendMail;
 import com.blog.domain.User;
+import com.blog.service.BlogService;
 import com.blog.service.UserService;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
@@ -26,6 +31,8 @@ import java.io.IOException;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private BlogService blogService;
 
     @RequestMapping("/registerPage")
     public String registerPage() {
@@ -33,9 +40,9 @@ public class UserController {
     }
 
     @RequestMapping("index")
-    public String index(HttpServletRequest req) {
-        HttpSession session = req.getSession();
-        session.getAttribute("userx");
+    public String index(Model model) {
+        List<Blog> list = blogService.selectAllBlog();
+        model.addAttribute("blog", list);
         return "index";
     }
 
@@ -69,7 +76,7 @@ public class UserController {
                 user.setImage(newFileName);
                 userService.add(user);
                 model.addAttribute("user", user);
-                return "login";
+                return "redirect:/user/loginPage";
             } else {
                 model.addAttribute("users", user);
                 model.addAttribute("error", "两次密码不同");

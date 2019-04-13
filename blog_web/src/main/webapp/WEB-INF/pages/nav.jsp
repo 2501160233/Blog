@@ -15,8 +15,9 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/user/index">首页</a></li>
                 <li><a href="#">热门博客</a></li>
-                <li><a href="#">分类</a></li>
-                <li><a href="#">留言本</a></li>
+                <div class="search-bar">
+                    <input type="search" class="form-control" placeholder="搜博客">
+                </div>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" id="user">
@@ -24,15 +25,20 @@
                     <li><a href="/user/loginPage">登录</a></li>
                 </c:if>
                 <c:if test="${sessionScope.userx!=null}">
-                    <li><a href="#" style="font-size: 15px; color: gold">${sessionScope.userx.image}</a>
-                            <%-- <ul class="mine">
-                                 <c:if test="${userx.type==1}">
-                                     <li><a href="#">我的博客</a></li>
-                                     <li><a href="#">个人资料</a></li>
-                                     <li><a href="#">用户管理</a></li>
-                                     <li><a href="#">退出登录</a></li>
-                                 </c:if>
-                             </ul>--%>
+                    <li id="person"><img src="/image/${sessionScope.userx.image}"
+                                         style="width: 45px;border-radius: 50%;height:45px">
+                        <ul class="mine">
+                            <li><a href="/blog/myBlogs" style="color: #000 !important;font-size: 14px !important;">
+                                我的博客</a></li>
+                            <li><a href="#" style="color: #000 !important;font-size: 14px !important;">
+                                个人资料</a></li>
+                            <c:if test="${userx.type==1}">
+                                <li><a href="#" style="color: #000 !important;font-size: 14px !important;">
+                                    用户管理</a></li>
+                            </c:if>
+                            <li><a href="/user/loginOut" style="color: #000 !important;font-size: 14px !important;">
+                                退出登录</a></li>
+                        </ul>
                     </li>
                 </c:if>
                 <li><a href="/user/registerPage">注册</a></li>
@@ -41,8 +47,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">我的博客</a></li>
-                <li><a href="#">写博客</a></li>
+                <li><a href="/blog/myBlogs">我的博客</a></li>
+                <li><a href="/blog/write">写博客</a></li>
             </ul>
         </div>
     </div>
