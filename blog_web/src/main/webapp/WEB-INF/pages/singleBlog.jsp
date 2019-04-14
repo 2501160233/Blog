@@ -20,8 +20,7 @@
 
         <div class="news-content">
             <blockquote>
-                <p>
-                    ${myBlog.blog_min}
+                <p>摘要：  ${myBlog.blog_min}
                 </p>
             </blockquote>
             <div>
