@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/blog")
@@ -91,5 +93,32 @@ public class BlogController {
     @RequestMapping("/hot")
     public String hot() {
         return "hotBlog";
+    }
+
+    @RequestMapping("select")
+    public String select(Model model) {
+        List<Blog> list = blogService.selectAllBlog();
+        List<Blog> list1 = new ArrayList<>();
+        List<Blog> list2 = new ArrayList<>();
+        int[] a = new int[3];
+        for (int i = 0; i < 3; i++) {
+            a[i] = (int) (Math.random() * (list.size() - 1) + 1);
+        }
+        if (list.size() > 10) {
+            for (int i = 0; i < 3; i++) {
+                list1.add(list.get(a[i]));
+            }
+            model.addAttribute("Blog1", list1);
+        } else {
+            if (list.size() > 3) {
+                for (int i = 0; i < 3; i++) {
+                    list2.add(list.get(i));
+                }
+                model.addAttribute("Blog1", list2);
+            } else {
+                model.addAttribute("Blog1", list);
+            }
+        }
+        return "index";
     }
 }

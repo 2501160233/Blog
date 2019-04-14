@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,20 +41,29 @@ public class UserController {
         return "signup";
     }
 
+    //第一次取出数据
     @RequestMapping("index")
     public String index(Model model) {
         List<Blog> list = blogService.selectAllBlog();
-        model.addAttribute("blog", list);
+        List<Blog> list1 = new ArrayList<>();
+        if (list.size() > 3) {
+            for (int i = 0; i < 3; i++) {
+                list1.add(list.get(i));
+            }
+            model.addAttribute("blog", list1);
+        } else {
+            model.addAttribute("blog", list);
+        }
         return "index";
     }
 
     //注册
     @RequestMapping(value = "/req", method = RequestMethod.POST)
 
-    public String register(@Valid User user, Errors errors,@RequestParam("file") MultipartFile file,  Model model, HttpServletRequest req) throws IOException {
+    public String register(@Valid User user, Errors errors, @RequestParam("file") MultipartFile file, Model model, HttpServletRequest req) throws IOException {
         if (errors.getErrorCount() > 0) {
             for (FieldError fieldError : errors.getFieldErrors()) {
-                System.out.println(fieldError.getField()+"   "+fieldError.getDefaultMessage());
+                System.out.println(fieldError.getField() + "   " + fieldError.getDefaultMessage());
             }
             model.addAttribute("errors", errors.getFieldErrors());
             model.addAttribute("users", user);
