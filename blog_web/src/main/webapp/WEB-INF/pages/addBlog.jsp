@@ -16,6 +16,9 @@
 <jsp:include page="nav.jsp"/>
 <div class="AddBolg">
     <h3>添加博客</h3>
+    <c:if test="${Error!=null}">
+        <span style="color: red;font-size:20px">${Error}</span>
+    </c:if>
     <form action="/blog/save" method="post" enctype="multipart/form-data">
         <label>博客标题</label>
         <input type="text" name="blog_title">
@@ -30,7 +33,7 @@
             <option value="其他">其他</option>
         </select>
         <label>请上传照片</label>
-        <input type="file" name="images">
+        <input type="file" name="file">
         <button class="btn btn-primary btn-block" type="submit">提交</button>
     </form>
 </div>

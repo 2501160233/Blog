@@ -16,13 +16,13 @@
     <h3>
         注册
         <c:if test="${errors!=null||error!=null}">
-            <p style="font-size: 20px;color: red">错误提示:</p>
+            <p style="font-size: 20px;color: #dd356e">错误提示:</p>
         </c:if>
         <c:if test="${error!=null}">
-            <p style="font-size: 20px; color: red">${error}</p>
+            <p style="font-size: 20px;color: #dd356e">${error}</p>
         </c:if>
         <c:forEach var="error" items="${errors}">
-            <p style="font-size: 20px;color: red">${error.defaultMessage}</p>
+            <p style="font-size: 17px;color: #dd356e">${error.defaultMessage}</p>
         </c:forEach>
     </h3>
     <form action="/user/req" id="regForm" method="post" enctype="multipart/form-data">
@@ -40,11 +40,12 @@
         </div>
         <div class="form-group">
             <label>邮箱</label>
+
             <input type="text" class="form-control" value="${users.email}" name="email" placeholder="请输入注册邮箱">
         </div>
         <div class="form-group">
             <p>请上传头像照片</p>
-            <input type="file" name="image" id="image">
+            <input type="file" name="file">
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">注册</button>

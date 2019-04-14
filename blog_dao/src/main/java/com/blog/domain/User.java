@@ -1,13 +1,14 @@
 package com.blog.domain;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class User {
     private Integer id;
-    @NotNull(message = "昵称不能为空")
+    @NotEmpty(message = "昵称不能为空")
     private String username;
     @NotNull(message = "密码不能为空")
     @Size(min = 6, max = 20, message = "密码长度必须在6-20之间")

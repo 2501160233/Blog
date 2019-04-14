@@ -44,7 +44,12 @@
                     <div class="news-list">
                         <div class="news-list-item clearfix ani1">
                             <div class="col-xs-4">
-                                <img src="/image/${blog.image}" img-fluid class="animate1">
+                                <c:if test="${blog.image.indexOf('.')>=0}">
+                                    <img src="/image/${blog.image}" img-fluid class="animate1">
+                                </c:if>
+                                <c:if test="${blog.image.indexOf('.')<0}">
+                                    <img src="/img/1.jpg" img-fluid class="animate1">
+                                </c:if>
                             </div>
                             <div class="col-xs-8">
                                 <a href="/blog/content/${blog.blog_id}">

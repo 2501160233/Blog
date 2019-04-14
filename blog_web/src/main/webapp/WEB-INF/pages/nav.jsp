@@ -14,7 +14,7 @@
         <div class="hidden-xs">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/user/index">首页</a></li>
-                <li><a href="#">热门博客</a></li>
+                <li><a href="/blog/hot">热门博客</a></li>
                 <div class="search-bar">
                     <input type="search" class="form-control" placeholder="搜博客">
                 </div>

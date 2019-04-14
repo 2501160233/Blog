@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,34 +50,37 @@ public class UserController {
     //注册
     @RequestMapping(value = "/req", method = RequestMethod.POST)
 
-    public String register(@RequestParam("image") MultipartFile file, @Valid User user, Errors errors, Model model, HttpServletRequest req) throws IOException {
-        System.out.println(user);
-        System.out.println(req.getParameter("passwordAgain"));
-        if (errors.getErrorCount() > 1) {
+    public String register(@Valid User user, Errors errors,@RequestParam("file") MultipartFile file,  Model model, HttpServletRequest req) throws IOException {
+        if (errors.getErrorCount() > 0) {
+            for (FieldError fieldError : errors.getFieldErrors()) {
+                System.out.println(fieldError.getField()+"   "+fieldError.getDefaultMessage());
+            }
             model.addAttribute("errors", errors.getFieldErrors());
             model.addAttribute("users", user);
             return "signup";
         } else {
             model.addAttribute("errors", null);
             if (req.getParameter("passwordAgain") != null && req.getParameter("passwordAgain").equals(user.getPassword())) {
-                /*
-                 * 处理文件上传
-                 * 获取文件上传名字
-                 * */
-                String filename = file.getOriginalFilename();
-                String substring = filename.substring(filename.lastIndexOf('.'));
-                String realPath = req.getServletContext().getRealPath("/image");
-                //随机取一个名字
-                String newFileName = String.valueOf(System.currentTimeMillis()) + substring;
-                File file1 = new File(realPath, newFileName);
-                if (!file1.getParentFile().exists()) {
-                    file1.getParentFile().mkdirs();
+                User user1 = userService.selectByUsername(user.getUsername());
+                if (user1 != null) {
+                    model.addAttribute("error", "该用户已经被注册");
+                    return "signup";
+                } else {
+                    String filename = file.getOriginalFilename();
+                    String substring = filename.substring(filename.lastIndexOf('.'));
+                    String realPath = req.getServletContext().getRealPath("/image");
+                    //随机取一个名字
+                    String newFileName = String.valueOf(System.currentTimeMillis()) + substring;
+                    File file1 = new File(realPath, newFileName);
+                    if (!file1.getParentFile().exists()) {
+                        file1.getParentFile().mkdirs();
+                    }
+                    file.transferTo(file1);
+                    user.setImage(newFileName);
+                    userService.add(user);
+                    model.addAttribute("user", user);
+                    return "redirect:/user/loginPage";
                 }
-                file.transferTo(file1);
-                user.setImage(newFileName);
-                userService.add(user);
-                model.addAttribute("user", user);
-                return "redirect:/user/loginPage";
             } else {
                 model.addAttribute("users", user);
                 model.addAttribute("error", "两次密码不同");

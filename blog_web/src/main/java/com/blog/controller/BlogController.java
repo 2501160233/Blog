@@ -36,28 +36,35 @@ public class BlogController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Blog blog, @RequestParam("images") MultipartFile file,
+    public String save(Blog blog, @RequestParam(value = "file", required = false) MultipartFile file,
                        Model model, HttpServletRequest req) throws IOException {
         System.out.println(blog);
-
-        HttpSession session = req.getSession();
-        User userx = (User) session.getAttribute("userx");
-        Integer id = userx.getId();
-        String filename = file.getOriginalFilename();
-        String substring = filename.substring(filename.lastIndexOf('.'));
-        String realPath = req.getServletContext().getRealPath("/image");
-        //随机取一个名字
-        String newFileName = String.valueOf(System.currentTimeMillis()) + substring;
-        File file1 = new File(realPath, newFileName);
-        if (!file1.getParentFile().exists()) {
-            file1.getParentFile().mkdirs();
+        if (blog.getBlog_title().length() == 0 || blog.getBlog_min().length() == 0) {
+            model.addAttribute("Error", "请添加博客");
+            return "addBlog";
+        } else {
+            HttpSession session = req.getSession();
+            User userx = (User) session.getAttribute("userx");
+            Integer id = userx.getId();
+            String filename = file.getOriginalFilename();
+            String substring = "";
+            if (filename.length() != 0) {
+                substring = filename.substring(filename.lastIndexOf('.'));
+            }
+            String realPath = req.getServletContext().getRealPath("/image");
+            //随机取一个名字
+            String newFileName = String.valueOf(System.currentTimeMillis()) + substring;
+            File file1 = new File(realPath, newFileName);
+            if (!file1.getParentFile().exists()) {
+                file1.getParentFile().mkdirs();
+            }
+            file.transferTo(file1);
+            blog.setImage(newFileName);
+            blog.setUser_id(id);
+            blogService.save(blog);
+            model.addAttribute("blog", blog);
+            return "redirect:/user/index";
         }
-        file.transferTo(file1);
-        blog.setImage(newFileName);
-        blog.setUser_id(id);
-        blogService.save(blog);
-        model.addAttribute("blog", blog);
-        return "redirect:/user/index";
     }
 
     @RequestMapping("/content/{blog_id}")
@@ -79,5 +86,10 @@ public class BlogController {
             System.out.println(list);
             return "myBlog";
         }
+    }
+
+    @RequestMapping("/hot")
+    public String hot() {
+        return "hotBlog";
     }
 }
