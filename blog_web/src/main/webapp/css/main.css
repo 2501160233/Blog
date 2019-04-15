@@ -537,3 +537,48 @@ blockquote{
     width: 100%;
     margin-top: 18px;
 }
+/*个人资料*/
+.personalContent {
+    max-width: 800px;
+}
+
+.personalContent h2,.personalContent1 h2 {
+    font-size: 29px;
+    color: #000000;
+    text-align: center;
+    margin-top: 30px;
+}
+.personal {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.personal input {
+    margin-left: 6px;
+}
+
+.personalImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 60px;
+    float:right;
+}
+
+.personalContent p {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 15px;
+    margin-top: 16px;
+}
+.personalContent p span{
+    font-size: 15px;
+    font-weight: normal;
+}
+.personalA{
+    color: blue;
+    font-size: 15px;
+    float: right;
+    font-weight: normal;
+    margin-top: 20px;
+}
