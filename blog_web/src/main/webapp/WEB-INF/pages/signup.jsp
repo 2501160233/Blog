@@ -9,6 +9,8 @@
     <title>用户注册</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 <jsp:include page="nav.jsp"/>
@@ -28,7 +30,8 @@
     <form action="/user/req" id="regForm" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>用户名</label>
-            <input type="text" value="${users.username}" class="form-control" name="username" placeholder="请输入用户名">
+            <input type="text" value="${users.username}" class="form-control" name="username" id="username"
+                   placeholder="请输入用户名">
         </div>
         <div class="form-group">
             <label>密码</label>
@@ -52,5 +55,7 @@
         </div>
     </form>
 </div>
+<script>
+</script>
 </body>
 </html>
