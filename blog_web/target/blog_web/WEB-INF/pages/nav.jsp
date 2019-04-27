@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="navbar navbar-default">
@@ -13,7 +14,7 @@
         <input class="hidden" id="toggle-checkbox" type="checkbox">
         <div class="hidden-xs">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/user/index">首页</a></li>
+                <li ><a  href="/user/index">首页</a></li>
                 <li><a href="/blog/hot">热门博客</a></li>
                 <div class="search-bar">
                     <input type="search" class="form-control" placeholder="搜博客">
@@ -22,7 +23,7 @@
 
             <ul class="nav navbar-nav navbar-right" id="user">
                 <c:if test="${sessionScope.userx==null}">
-                    <li><a href="/user/loginPage">登录</a></li>
+                    <li ><a href="/user/loginPage">登录</a></li>
                 </c:if>
                 <c:if test="${sessionScope.userx!=null}">
                     <li id="person"><img src="/image/${sessionScope.userx.image}"
@@ -31,10 +32,12 @@
                             <li><a href="/blog/myBlogs" style="color: #000 !important;font-size: 14px !important;">
                                 我的博客</a></li>
                             <li><a href="#" style="color: #000 !important;font-size: 14px !important;">
-                                个人资料</a></li>
+                                修改资料</a></li>
                             <c:if test="${userx.type==1}">
-                                <li><a href="#" style="color: #000 !important;font-size: 14px !important;">
+                                <li><a href="/admin/userDir" style="color: #000 !important;font-size: 14px !important;">
                                     用户管理</a></li>
+                                <li><a href="/admin/blogDir" style="color: #000 !important;font-size: 14px !important;">
+                                    博客管理</a></li>
                             </c:if>
                             <li><a href="/user/loginOut" style="color: #000 !important;font-size: 14px !important;">
                                 退出登录</a></li>
@@ -66,6 +69,7 @@
         out1.style.display = 'none';
         user1.style.display = 'block';
     }
+
 
 </script>
 </body>

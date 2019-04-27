@@ -3,32 +3,41 @@ a:hover {
     text-decoration: none;
 }
 
-.navbar-default{
+.navbar-default {
     background-color: #dc143c !important;
     padding: 10px;
-
 }
-.navbar-default .navbar-nav>.active>a{
+
+/*
+.navbar-default .navbar-nav > .active > a {
     display: inline-block !important;
     border-radius: 10% !important;
     color: #000 !important;
     background-color: pink !important;
 }
+*/
+
 .hidden-xs ul li a{
-    color: white !important;
-    font-size:17px !important;
+    color: #FFFFFF !important;
+    font-size: 17px !important;
 }
 
+.hidden-xs li:hover {
+    display: inline-block !important;
+    border-radius: 10% !important;
+    /*color: #000 !important;*/
+    background-color: pink !important;
+}
 .swiper-container {
     width: 100%;
     height: 250px;
     margin-bottom: 20px;
 }
+
 .swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
-    /* Center slide text vertically */
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -39,8 +48,9 @@ a:hover {
     -webkit-align-items: center;
     align-items: center;
 }
-.swiper-slide img{
-    width:90%;
+
+.swiper-slide img {
+    width: 90%;
 }
 
 img,
@@ -49,7 +59,7 @@ img,
     border-radius: 3px;
 }
 
-.left .col-sm-8{
+.left .col-sm-8 {
     border: 1px solid #f6f6f6;
 }
 
@@ -57,18 +67,20 @@ img,
     border: 0;
     margin-bottom: 5px;
 }
-
 .side-bar .list-group-item.active {
     background-color: #ea0c3c;
 }
-.news-list{
+
+.news-list {
     margin-left: -20px;
 }
-.news-list .clearfix img{
+
+.news-list .clearfix img {
     display: block;
-    width:100%;
+    width: 100%;
     height: 150px;
 }
+
 .news-list-item {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -82,31 +94,38 @@ img,
     margin-bottom: 8px;
     line-height: 1.5;
 }
+
 .news-list-item .title:hover {
     color: #337ab7;
 }
-.news-list-item .article{
+
+.news-list-item .article {
     font-size: 14px;
     line-height: 20px;
 }
+
 .news-list-item .info {
     color: #888;
     margin-top: 10px;
 }
-.news-list-item .info span{
+
+.news-list-item .info span {
     font-size: 14px;
     margin-right: 5px;
 }
-.news-list-item a{
+
+.news-list-item a {
     display: inline-block;
     width: 100%;
 }
-.search-bar{
-    float:left;
+
+.search-bar {
+    float: left;
     margin-top: 10px;
     margin-left: 30px;
     width: 250px;
 }
+
 .avatar {
     display: inline-block;
 }
@@ -119,7 +138,7 @@ img,
 }
 
 .side-bar-card {
-    background: rgba(0,0,0,.05);
+    background: rgba(0, 0, 0, .05);
     margin-top: 15px;
     padding: 10px 0;
 }
@@ -146,7 +165,7 @@ img,
 }
 
 .side-bar-card .card-body .list .item:hover {
-    background: rgba(0,0,0,.05);
+    background: rgba(0, 0, 0, .05);
 }
 
 .card-body .list .item .title {
@@ -192,24 +211,28 @@ img,
     background-color: #555555;
     padding: 40px 0px;
 }
-.footer h4{
+
+.footer h4 {
     margin-bottom: 20px;
-    color:#a3a3a3;
+    color: #a3a3a3;
     font-weight: bolder;
 }
-.footer span{
+
+.footer span {
     font-size: 14px;
     color: #a3a3a3;
-    margin-bottom:12px;
+    margin-bottom: 12px;
     margin-left: 15px;
     display: inline-block;
 
 }
-.footer p{
+
+.footer p {
     margin-bottom: 12px;
-    color:#a3a3a3;
+    color: #a3a3a3;
 }
-.connect{
+
+.connect {
     width: 100%;
     height: 30px;
     border: 1px solid #eeeeee;
@@ -220,37 +243,43 @@ img,
     text-align: center;
     background-color: #f8f8f8;
 }
-.connect-f{
+
+.connect-f {
     border: 1px solid #eeeeee;
     border-top: none;
     padding: 20px 5px 10px 5px;
 }
-.connect-f span{
+
+.connect-f span {
     font-weight: bolder;
     font-size: 15px;
     margin-bottom: 10px;
     display: inline-block;
 }
-.connect-f img{
+
+.connect-f img {
     width: 100px;
 
 }
-.connect-foot div{
+
+.connect-foot div {
     border: 1px solid #eeeeee;
     height: 35px;
     text-align: center;
     line-height: 35px;
     background-color: #f8f8f8;
 }
-.form-control{
+
+.form-control {
     border: 1px solid #74acd5;
 }
 
-.foot{
+.foot {
     text-align: center;
     font-size: 16px;
     padding: 15px;
 }
+
 .container-small {
     max-width: 450px;
 }
@@ -280,10 +309,12 @@ img,
     display: none;
 }
 
-#toggle-label:hover {
+#toggle-label:hover
+{
     color: #333;
 }
-#canvas{
+
+#canvas {
     width: 1250px;
     height: 700px;
     z-index: -1;
@@ -292,25 +323,30 @@ img,
     top: 50px;
 
 }
-.demo{
+
+.demo {
     padding: 50px;
 }
-.carousel-inner img{
+
+.carousel-inner img {
     width: 100%;
     max-height: 300px;
     min-height: 200px;
     object-fit: cover;
     /*保持图像原有的比例*/
 }
-.carousel.ht .carousel-item{
+
+.carousel.ht .carousel-item {
     height: 300px;
 }
-.hotBlog{
+
+.hotBlog {
     width: 100%;
     margin-top: 50px;
     border: 1px solid #eeeeee;
 }
-.hotBlog p{
+
+.hotBlog p {
     width: 100%;
     height: 30px;
     border: 1px solid #eeeeee;
@@ -321,15 +357,18 @@ img,
     text-align: center;
     background-color: #f8f8f8;
 }
-.hotBlog ul{
+
+.hotBlog ul {
     width: 100%;
     list-style: none;
     margin-left: -19px;
 }
-.hotBlog ul li{
+
+.hotBlog ul li {
     border-bottom: 1px dotted #cccccc;
 }
-.hotBlog ul li>a {
+
+.hotBlog ul li > a {
     display: inline-block;
     height: 25px;
     line-height: 25px;
@@ -337,10 +376,12 @@ img,
     color: #000;
 
 }
-.hotBlog ul li a:hover{
+
+.hotBlog ul li a:hover {
     color: #337ab7;
 }
-.hotBlog ul li span{
+
+.hotBlog ul li span {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -353,42 +394,50 @@ img,
 }
 
 /*addBlog*/
-.AddBolg *{
+.AddBolg * {
     box-sizing: border-box;
 }
-.AddBolg{
-    margin:0 auto;
-    max-width:700px;
-    padding :20px;
+
+.AddBolg {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 20px;
 }
-.AddBolg h3{
+
+.AddBolg h3 {
     margin-top: 10px;
 }
 
-.AddBolg label{
+.AddBolg label {
     display: block;
-    margin :20px 0 10px;
+    margin: 20px 0 10px;
 }
-input[type="text"],textarea,select{
+
+input[type="text"], textarea, select {
     display: block;
     width: 100%;
-    padding:8px;
+    padding: 8px;
 }
-.AddBolg .checkboxes label{
+
+.AddBolg .checkboxes label {
     display: inline-block;
     margin-top: 13px;
 }
-.AddBolg label{
+
+.AddBolg label {
     margin-top: 15px;
 }
-textarea{
+
+textarea {
     height: 200px;
 }
+
 .AddBolg .checkboxes input {
     display: inline-block;
     margin-right: 10px;
 }
-.AddBolg button{
+
+.AddBolg button {
     display: block;
     background: crimson;
     color: #FFFFFF;
@@ -398,49 +447,74 @@ textarea{
     cursor: pointer;
     border-radius: 4px;
     width: 100%;
-    margin:30px auto;
+    margin: 30px auto;
 }
-.container-black{
+
+.container-black {
     margin-top: -20px;
-    height: 700px;
+    height:100%;
     background-color: #eeeeee;
     opacity: 0.85;
     color: #000;
     width: 80%;
     max-width: 1000px !important;
 }
-blockquote p{
+.like{
+    position: relative;
+    margin:60px auto;
+    width: 100px;
+    height: 100px;
+}
+.heart{
+    font-size: 50px;
+    color: cornflowerblue;
+    margin:0 auto;
+    width: 50px;
+    height: 50px;
+
+}
+ .clickHeart{
+     position: absolute;
+     left: 13px;
+     bottom: 5px;
+     font-size: 18px;
+ }
+blockquote p {
     font-size: 15px;
     color: #000;
 }
-blockquote{
-    /*height: 60px;*/
+
+blockquote {
+    height: 60px;
     border: 1px solid #c5c5c5;
     border-left: 5px solid #6798f2;
     background-color: #f4ffef;
 }
-.news-content div{
+
+.news-content div {
     font-size: 15px;
     opacity: .8;
 }
-.hot-top{
+
+.hot-top {
     height: 50px;
     border: 1px solid #eeeeee;
     border-left: 10px solid blue;
     text-align: left;
     line-height: 50px;
-    padding-left:30px;
+    padding-left: 30px;
     margin-bottom: 20px;
     color: #000;
 }
-.left-card{
+
+.left-card {
     width: 100%;
     height: 500px;
     border: 1px solid #cccccc;
     background-color: #FFFFFF;
-
 }
-.left-card .card-one,.card-two {
+
+.left-card .card-one, .card-two {
     height: 80px;
     border-bottom: 2px solid #eeeeee;
     text-align: left;
@@ -448,28 +522,33 @@ blockquote{
     font-size: 16px;
     margin-bottom: 5px;
 }
-.left-card .card-one .col-md-7{
+
+.left-card .card-one .col-md-7 {
     margin-left: -10px;
 }
-.card-two{
+
+.card-two {
     font-size: 13px;
     text-align: center;
 }
-.left-card .card-one img{
+
+.left-card .card-one img {
     width: 100%;
 }
-.right-card{
-    width: 100% ;
+
+.right-card {
+    width: 100%;
     height: 170px;
     border: 1px solid #eeeeee;
     background-color: #fff;
     margin-left: -10px;
     padding-left: 8px;
 }
+
 /*头像hover*/
-.mine{
+.mine {
     width: 80px;
-    list-style:none;
+    list-style: none;
     background-color: #FFFFFF;
     padding: 0;
     position: absolute;
@@ -480,7 +559,8 @@ blockquote{
     z-index: 1;
     border: 1px solid #eeeeee;
 }
-.mine>li{
+
+.mine > li {
     width: 80px;
     height: 40px;
     border-bottom: 1px solid #eaeaea;
@@ -489,26 +569,30 @@ blockquote{
     font-size: 14px;
 
 }
-.mine>li:hover{
-    background-color: #bdeae5;
+
+.mine > li:hover {
+    background-color: #bdeae5 !important;
+    border-radius: 0 !important;
+
 }
-.mine>li:last-child{
+
+.mine > li:last-child {
     border-bottom: none;
 }
-#person:hover .mine{
-    display:block;
-}
-/*.container-small {
-    max-width: 450px;
-}*/
 
-.hotBlog-container{
+#person:hover .mine {
+    display: block;
+}
+
+.hotBlog-container {
     max-width: 800px !important;
 }
+
 .myBlog-container {
     max-width: 1050px !important;
 }
-.card-demo{
+
+.card-demo {
     width: 400px;
     margin: 100px auto;
     border: 1px solid #eeeeee;
@@ -516,9 +600,10 @@ blockquote{
     background: url('../img/81.jpg') 0 0 no-repeat;
     overflow: hidden;
 }
-.card-demo h2{
+
+.card-demo h2 {
     color: #ffffff;
-    line-height:20px;
+    line-height: 20px;
     height: 40px;
     font-size: 26px;
     margin-top: 20px;
@@ -526,28 +611,31 @@ blockquote{
     text-align: center;
     margin-bottom: 20px;
 }
-.card-demo .describe{
+
+.card-demo .describe {
     font-size: 13px;
     color: #636363;
-    margin-top:18px;
+    margin-top: 18px;
     text-align: center;
 }
-.card-demo .btn{
+
+.card-demo .btn {
     float: right;
     width: 100%;
     margin-top: 18px;
 }
-/*个人资料*/
+
 .personalContent {
     max-width: 800px;
 }
 
-.personalContent h2,.personalContent1 h2 {
+.personalContent h2, .personalContent1 h2 {
     font-size: 29px;
     color: #000000;
     text-align: center;
     margin-top: 30px;
 }
+
 .personal {
     margin-top: 15px;
     text-align: left;
@@ -562,7 +650,8 @@ blockquote{
     height: 60px;
     border-radius: 50%;
     margin-top: 60px;
-    float:right;
+    float: right;
+    float: right;
 }
 
 .personalContent p {
@@ -571,14 +660,98 @@ blockquote{
     line-height: 15px;
     margin-top: 16px;
 }
-.personalContent p span{
+
+.personalContent p span {
     font-size: 15px;
     font-weight: normal;
 }
-.personalA{
+
+.personalContent p span {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.personalA {
     color: blue;
     font-size: 15px;
     float: right;
     font-weight: normal;
     margin-top: 20px;
+}
+
+.comment {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.comment textarea {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    border: none;
+}
+
+
+.comment .comment-p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.comment .text {
+    width: 100%;
+    height: 72px;
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+.comment input {
+    width: 80px;
+    position: absolute;
+    right: 40px;
+    top: 115px;
+    background-color: red;
+    color: #FFFFFF;
+    opacity: 1 !important;
+}
+
+.onecomment {
+    width: 100%;
+    color: red;
+    background-color: #fff;
+    margin-top: 16px;
+    height: 120px;
+    padding: 10px;
+}
+
+.onecomment img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 17px auto;
+}
+
+.newest {
+    font-size: 18px;
+    color: red;
+    margin-left: 15px;
+    line-height: 50px;
+    border-bottom: 1px solid red;
+    margin-top: 60px;
+}
+
+.onecomment .p0, .p1 {
+    font-size: 15px;
+    color: black;
+    margin-top: 10px;
+}
+
+.onecomment .p1 {
+    color: black;
+}
+
+.handle {
+    float: right;
+    margin-top: 10px;
+    color: black;
 }

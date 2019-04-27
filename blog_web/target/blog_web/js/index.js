@@ -18,43 +18,26 @@ window.onload=function () {
     });
 
     //图片的css动画
-    $('.ani1').mouseover(function(){
-        $('.animate1').addClass("animated");
-        $('.animate1').addClass("pulse");
+    $('.news-list img').mouseover(function(){
+        $(this).addClass("animated");
+        $(this).addClass("pulse");
     }).mouseout(function(){
-        $('.animate1').removeClass("animated");
-        $('.animate1').removeClass("pulse");
+        $(this).removeClass("animated");
+        $(this).removeClass("pulse");
     });
-    $('.ani2').mouseover(function(){
-        $('.animate2').addClass("animated");
-        $('.animate2').addClass("pulse");
-    }).mouseout(function(){
-        $('.animate2').removeClass("animated");
-        $('.animate2').removeClass("pulse");
-    });
-    $('.ani3').mouseover(function(){
-        $('.animate3').addClass("animated");
-        $('.animate3').addClass("pulse");
-    }).mouseout(function(){
-        $('.animate3').removeClass("animated");
-        $('.animate3').removeClass("pulse");
-    });
-    $('.ani4').mouseover(function(){
-        $('.animate4').addClass("animated");
-        $('.animate4').addClass("pulse");
-    }).mouseout(function(){
-        $('.animate4').removeClass("animated");
-        $('.animate4').removeClass("pulse");
-    });
-    //导航条
-    $('.hidden-xs li').click(function () {
-        var f = this;
-        $('.hidden-xs li').each(function () {
-            this.className = this == f ? 'active' : 'none'
+
+   //点赞
+        $(".heart").click(function(){
+            console.log('aaaaa');
+            $(this).addClass("animated");
+            $(this).addClass("heartBeat");
+            $(this).css("color","red");
         });
-    });
-
-
+        $(".heart").dblclick(function () {
+            $(this).removeClass("animated");
+            $(this).removeClass("heartBeat");
+            $(this).css("color","cornflowerblue");
+        });
 
 };
 

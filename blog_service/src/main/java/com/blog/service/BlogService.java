@@ -1,6 +1,7 @@
 package com.blog.service;
 
 import com.blog.domain.Blog;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,8 @@ public interface BlogService {
     List<Blog> selectByUserId(Integer id);
 
     Blog selectByBlogId(Integer blog_id);
+
+    PageInfo getAll(int pageNumber, int pageSize);
+
+    void deleteByBlogId(Integer id);
 }

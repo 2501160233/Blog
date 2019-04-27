@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/animate.css">
+    <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <title>极简博客</title>
 </head>
 <body>
@@ -35,67 +35,32 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-                <form action="/blog/select">
-                    <c:if test="${blog!=null}">
-                        <c:forEach items="${blog}" var="blog">
-                            <div class="news-list">
-                                <div class="news-list-item clearfix ani1">
-                                    <div class="col-xs-4">
-                                        <c:if test="${blog.image.indexOf('.')>=0}">
-                                            <img src="/image/${blog.image}" img-fluid class="animate1">
-                                        </c:if>
-                                        <c:if test="${blog.image.indexOf('.')<0}">
-                                            <img src="/img/1.jpg" img-fluid class="animate1">
-                                        </c:if>
-                                    </div>
-                                    <div class="col-xs-8">
-                                        <a href="/blog/content/${blog.blog_id}">
-                                            <p class="title"> ${blog.blog_title}</p>
-                                        </a>
-                                        <article class="article">${blog.blog_min}
-                                        </article>
-                                        <div class="info">
-                                            <span><i class="fa fa-heart"></i>&nbsp;&nbsp;赞</span>
-                                            <span><i class="fa fa-comment"></i>&nbsp;&nbsp;25评论</span>
-                                            <span>10分钟前</span>
-                                        </div>
-                                    </div>
+                <c:forEach items="${blog}" var="blog">
+                    <div class="news-list">
+                        <div class="news-list-item clearfix ani1">
+                            <div class="col-xs-4">
+                                <c:if test="${blog.image.indexOf('.')>=0}">
+                                    <img src="/image/${blog.image}" img-fluid class="animate1">
+                                </c:if>
+                                <c:if test="${blog.image.indexOf('.')<0}">
+                                    <img src="/img/1.jpg" img-fluid class="animate1">
+                                </c:if>
+                            </div>
+                            <div class="col-xs-8">
+                                <a href="/blog/content/${blog.blog_id}">
+                                    <p class="title"> ${blog.blog_title}</p>
+                                </a>
+                                <article class="article">${blog.blog_min}
+                                </article>
+                                <div class="info">
+                                    <span><i class="fa fa-heart"></i>&nbsp;&nbsp;赞</span>
+                                    <span><i class="fa fa-comment"></i>&nbsp;&nbsp;25评论</span>
+                                    <span>10分钟前</span>
                                 </div>
                             </div>
-                        </c:forEach>
-                    </c:if>
-                    <c:if test="${blog==null}">
-                        <c:forEach items="${Blog1}" var="blog">
-                            <div class="news-list">
-                                <div class="news-list-item clearfix">
-                                    <div class="col-xs-4">
-                                        <c:if test="${blog.image.indexOf('.')>=0}">
-                                            <img src="/image/${blog.image}" img-fluid >
-                                        </c:if>
-                                        <c:if test="${blog.image.indexOf('.')<0}">
-                                            <img src="/img/1.jpg" img-fluid class="animate1">
-                                        </c:if>
-                                    </div>
-                                    <div class="col-xs-8">
-                                        <a href="/blog/content/${blog.blog_id}">
-                                            <p class="title"> ${blog.blog_title}</p>
-                                        </a>
-                                        <article class="article">${blog.blog_min}
-                                        </article>
-                                        <div class="info">
-                                            <span><i class="fa fa-heart"></i>&nbsp;&nbsp;赞</span>
-                                            <span><i class="fa fa-comment"></i>&nbsp;&nbsp;25评论</span>
-                                            <span>10分钟前</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </c:if>
-                    <div style="width: 768px; text-align: center">
-                        <input type="submit" value="看点别的" class="btn btn-info" id="submit">
+                        </div>
                     </div>
-                </form>
+                </c:forEach>
             </div>
         </div>
         <div class="col-sm-4">
@@ -159,6 +124,7 @@
 <div class="foot">
     Copyright © 极简博客 丨17002430号 丨 36042102000137
 </div>
+
 <script src="../../js/index.js"></script>
 </body>
 </html>

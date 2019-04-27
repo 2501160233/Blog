@@ -1,6 +1,7 @@
 package com.blog.dao;
 
 import com.blog.domain.Blog;
+import com.blog.domain.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,8 @@ public interface BlogDao {
     List<Blog> selectByUserId(@Param("id") Integer id);
 
     Blog selectByBlogId(Integer blog_id);
+
+    List<Blog> selectAll();
+
+    void deleteByBlogId(@Param("id") Integer id);
 }

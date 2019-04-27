@@ -8,7 +8,6 @@
             values (#{blog_title},#{blog_min},#{blog_content},#{blog_class},#{image},#{user_id})
     </insert>
 
-
     <select id="selectAllBlog" resultType="com.blog.domain.Blog">
         select * from `blog`
     </select>
@@ -20,5 +19,11 @@
         select * from `blog`
         where blog_id=#{blog_id}
     </select>
-
+    <select id="selectAll" resultType="com.blog.domain.Blog">
+    select * from `blog`
+    </select>
+    <delete id="deleteByBlogId">
+        delete from `blog`
+        where blog_id=#{id}
+    </delete>
 </mapper>

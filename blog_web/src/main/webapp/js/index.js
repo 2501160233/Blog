@@ -26,15 +26,18 @@ window.onload=function () {
         $(this).removeClass("pulse");
     });
 
-    //导航条
-    $('.hidden-xs li').click(function () {
-        var f = this;
-        $('.hidden-xs li').each(function () {
-            this.className = this == f ? 'active' : 'none'
+   //点赞
+        $(".heart").click(function(){
+            console.log('aaaaa');
+            $(this).addClass("animated");
+            $(this).addClass("heartBeat");
+            $(this).css("color","red");
         });
-    });
-
-
+        $(".heart").dblclick(function () {
+            $(this).removeClass("animated");
+            $(this).removeClass("heartBeat");
+            $(this).css("color","cornflowerblue");
+        });
 
 };
 

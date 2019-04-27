@@ -1,6 +1,7 @@
 package com.blog.service;
 
 import com.blog.domain.User;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,14 @@ public interface UserService {
     User selectByUsername(String username);
 
     List<User> selectAllUser();
+
+    PageInfo getAll(int pageNumber, int pageSize);
+
+    User selectByUserId(Integer id);
+
+    void updateByUserId(String email, String username, String password, Integer type, Integer id);
+
+    void deleteByUserId(Integer id);
+
+    User selectById(Integer id);
 }

@@ -8,6 +8,7 @@ public class Blog {
     private String blog_class;
     private String image;
     private Integer user_id;
+    private Integer blog_like;
 
     @Override
     public String toString() {
@@ -19,7 +20,16 @@ public class Blog {
                 ", blog_class='" + blog_class + '\'' +
                 ", image='" + image + '\'' +
                 ", user_id=" + user_id +
+                ", blog_like=" + blog_like +
                 '}';
+    }
+
+    public Integer getBlog_like() {
+        return blog_like;
+    }
+
+    public void setBlog_like(Integer blog_like) {
+        this.blog_like = blog_like;
     }
 
     public Integer getBlog_id() {

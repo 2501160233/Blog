@@ -36,7 +36,7 @@
 
     <!--配置切面-->
     <aop:config>
-        <aop:pointcut id="pointcut" expression="execution(* com.choose.service.*.*(..))"/>
+        <aop:pointcut id="pointcut" expression="execution(* com.blog.service.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
     </aop:config>
 

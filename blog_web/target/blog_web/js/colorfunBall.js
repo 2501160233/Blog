@@ -17,7 +17,7 @@ var mouse = {
 window.addEventListener('mousemove',function(event){
     mouse.x=event.x;
     mouse.y=event.y;
-    console.log(mouse);
+
 });
 
 //圆的数组

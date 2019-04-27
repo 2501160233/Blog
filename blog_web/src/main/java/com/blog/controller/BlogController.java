@@ -1,9 +1,10 @@
 package com.blog.controller;
 
 import com.blog.domain.Blog;
+import com.blog.domain.Comment;
 import com.blog.domain.User;
 import com.blog.service.BlogService;
-import org.omg.CORBA.INTERNAL;
+import com.blog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +20,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private CommentService commentService;
 
     @RequestMapping("write")
     public String write(HttpServletRequest request) {
@@ -73,6 +76,13 @@ public class BlogController {
     public String content(@PathVariable("blog_id") Integer blog_id, Model model) {
         Blog blog = blogService.selectByBlogId(blog_id);
         model.addAttribute("myBlog", blog);
+        //根据blog的id取出了所有评论
+        List<Comment> comments = commentService.selectById(blog_id);
+        List<Comment> revComments = new ArrayList<>();
+        for (int i = comments.size() - 1; i >= 0; i--) {
+            revComments.add(comments.get(i));
+        }
+        model.addAttribute("comments", revComments);
         return "singleBlog";
     }
 
