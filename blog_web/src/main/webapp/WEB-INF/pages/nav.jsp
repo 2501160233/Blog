@@ -5,7 +5,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="navbar navbar-default">
@@ -14,16 +13,18 @@
         <input class="hidden" id="toggle-checkbox" type="checkbox">
         <div class="hidden-xs">
             <ul class="nav navbar-nav">
-                <li ><a  href="/user/index">首页</a></li>
+                <li><a href="/user/index">首页</a></li>
                 <li><a href="/blog/hot">热门博客</a></li>
-                <div class="search-bar">
-                    <input type="search" class="form-control" placeholder="搜博客">
+                <div id="search" class="search-bar">
+                    <form  action="/blog/search" >
+                        <input   type="search" class="form-control" placeholder="搜博客" name="search" value="${search}">
+                    </form>
                 </div>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" id="user">
                 <c:if test="${sessionScope.userx==null}">
-                    <li ><a href="/user/loginPage">登录</a></li>
+                    <li><a href="/user/loginPage">登录</a></li>
                 </c:if>
                 <c:if test="${sessionScope.userx!=null}">
                     <li id="person"><img src="/image/${sessionScope.userx.image}"
@@ -57,6 +58,7 @@
     </div>
 </div>
 <script>
+
     var user = document.getElementById("user");
     var user0 = user.children[0];
     var user1 = user.children[1];
@@ -70,7 +72,7 @@
         user1.style.display = 'block';
     }
 
-
 </script>
+
 </body>
 </html>
