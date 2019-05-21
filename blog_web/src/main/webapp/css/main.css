@@ -1,4 +1,6 @@
-
+*{
+    list-style: none;
+}
 a:hover {
     text-decoration: none;
 }
@@ -16,12 +18,10 @@ a:hover {
     background-color: pink !important;
 }
 */
-
 .hidden-xs ul li a{
     color: #FFFFFF !important;
     font-size: 17px !important;
 }
-
 .hidden-xs li:hover {
     display: inline-block !important;
     border-radius: 10% !important;
@@ -72,9 +72,13 @@ img,
 }
 
 .news-list {
-    margin-left: -20px;
+    margin-left: -17px;
+    border: 1px solid #f6f6f6;
 }
-
+.hot_new-list:hover{
+    margin-left: -22px;
+    border-left:5px #7bff6d solid;
+}
 .news-list .clearfix img {
     display: block;
     width: 100%;
@@ -84,6 +88,7 @@ img,
 .news-list-item {
     padding-top: 10px;
     padding-bottom: 10px;
+
 }
 
 .news-list-item .title {
@@ -106,7 +111,7 @@ img,
 
 .news-list-item .info {
     color: #888;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .news-list-item .info span {
@@ -452,6 +457,7 @@ textarea {
 
 .container-black {
     margin-top: -20px;
+    padding-bottom:60px;
     height:100%;
     background-color: #eeeeee;
     opacity: 0.85;
@@ -473,12 +479,12 @@ textarea {
     height: 50px;
 
 }
- .clickHeart{
-     position: absolute;
-     left: 13px;
-     bottom: 5px;
-     font-size: 18px;
- }
+.clickHeart{
+    position: absolute;
+    left: 13px;
+    bottom: 5px;
+    font-size: 18px;
+}
 blockquote p {
     font-size: 15px;
     color: #000;
@@ -502,6 +508,7 @@ blockquote {
     border-left: 10px solid blue;
     text-align: left;
     line-height: 50px;
+    font-size:16px;
     padding-left: 30px;
     margin-bottom: 20px;
     color: #000;
@@ -509,7 +516,6 @@ blockquote {
 
 .left-card {
     width: 100%;
-    height: 500px;
     border: 1px solid #cccccc;
     background-color: #FFFFFF;
 }
@@ -520,7 +526,6 @@ blockquote {
     text-align: left;
     line-height: 80px;
     font-size: 16px;
-    margin-bottom: 5px;
 }
 
 .left-card .card-one .col-md-7 {
@@ -530,11 +535,15 @@ blockquote {
 .card-two {
     font-size: 13px;
     text-align: center;
-}
 
-.left-card .card-one img {
-    width: 100%;
 }
+/*------------------------------------------------*/
+.left-card .card-one img {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 90%;
+}
+/*------------------------------------------------*/
 
 .right-card {
     width: 100%;
@@ -585,11 +594,11 @@ blockquote {
 }
 
 .hotBlog-container {
-    max-width: 800px !important;
+    max-width:750px !important;
 }
 
 .myBlog-container {
-    max-width: 1050px !important;
+    max-width: 1100px;
 }
 
 .card-demo {
@@ -754,4 +763,138 @@ blockquote {
     float: right;
     margin-top: 10px;
     color: black;
+}
+.search-Top{
+    width: 100%;
+    height: 50px;
+    font-size:16px;
+    color: #a9a9a9;
+    line-height:50px;
+}
+.left-card .card-three{
+    width: 100% !important;
+}
+.calendar {
+    display: none;
+    width: 100%;
+    background-color: #fafafa;
+    border-radius: 6px;
+    padding-top: 20px;
+
+}
+
+.calendar-title {
+    position: relative;
+    height: 18px;
+    line-height: 18px;
+    margin-bottom:10px;
+
+}
+.calendar-title a.title {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 20px;
+    color: #0000e6;
+    opacity: 0.6;
+}
+
+.calendar-week,
+.calendar-date {
+    overflow: hidden;
+    padding :10px 15px 10px 15px;
+}
+
+.calendar-week .item,
+.calendar-date .item {
+    float: left;
+    width: 29px;
+    height: 29px;
+    line-height: 29px;
+    text-align: center;
+}
+.calendar-week {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(255, 128, 142);
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.calendar-title .arrow {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 50px;
+}
+.calendar-title .arrow span {
+    color: #ddd;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    user-select: none;
+}
+.calendar-title .arrow span:hover {
+    color: #888;
+}
+.calendar-title .arrow-prev {
+    float: left;
+}
+.calendar-title .arrow-next {
+    float: right;
+}
+/*------------------------------------------*/
+.calendar-date .item {
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    color: #999999;
+}
+/*------------------------------------------*/
+.calendar-date .item:hover,
+.calendar-date .item-curMonth:hover {
+    background-color: #e0e0e0;
+}
+.calendar-date .item-curMonth {
+    color: #333;
+}
+.calendar-date .item-curDay,
+.calendar-date .item-curDay:hover {
+    color: #fff;
+    background-color: rgb(255, 128, 142);
+}
+.calendar-today {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 90px;
+    height: 48px;
+    background-color: rgb(255, 128, 142);
+    border-radius: 5px;
+    z-index: 1000;
+}
+.calendar-today .triangle {
+    position: absolute;
+    top: 50%;
+    left: -16px;
+    margin-top: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent rgb(255, 128, 142) transparent transparent;
+}
+.calendar-today p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+
+}
+ .calendar ul{
+    padding-inline-start:20px !important;
+}
+ /*隐藏input*/
+@media screen and (max-width:800px) {
+   #search{
+       display: none;
+       background-color: yellow;
+   }
 }
