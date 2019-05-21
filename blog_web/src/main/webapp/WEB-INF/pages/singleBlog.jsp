@@ -22,7 +22,6 @@
     <h2 class="news-title">${myBlog.blog_title}</h2>
     <div class="news-status">${myBlog.blog_like}点赞
         <div class="label label-default">${myBlog.blog_class}</div>
-
         <div class="news-content">
             <blockquote>
                 <p>摘要： ${myBlog.blog_min}
@@ -33,12 +32,12 @@
             </div>
         </div>
     </div>
-<div class="like">
-    <div class="heart">
-        <i class="fa fa-heart" aria-hidden="true"></i>
+    <div class="like">
+        <div class="heart">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+        </div>
+        <div class="clickHeart">点个赞呗</div>
     </div>
-    <div class="clickHeart">点个赞呗</div>
-</div>
     <form action="/comment/${myBlog.blog_id}">
         <div class="comment">
             <p class="comment-p">
@@ -65,6 +64,22 @@
 <script src="../../js/Underscore.js"></script>
 <script src="../../js/colorfunBall.js"></script>
 <script src="../../js/index.js"></script>
+<script>
+    $(".heart").click(function () {
+        $(this).addClass("animated");
+        $(this).addClass("heartBeat");
+        $(this).css("color", "red");
+        $.get("${pageContext.request.contextPath}/comment/info/${myBlog.blog_id}", "", function (data) {
 
+        }, "json");
+    });
+    $(".heart").dblclick(function () {
+        $(this).removeClass("animated");
+        $(this).removeClass("heartBeat");
+        $(this).css("color", "cornflowerblue");
+        $.get("${pageContext.request.contextPath}/comment/reinfo/${myBlog.blog_id}", "", function (data) {
+        }, "json");
+    });
+</script>
 </body>
 </html>
