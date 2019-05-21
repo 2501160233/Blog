@@ -19,4 +19,12 @@ public interface BlogService {
     PageInfo getAll(int pageNumber, int pageSize);
 
     void deleteByBlogId(Integer id);
+
+    Integer selectByBlogLike(Integer id);
+
+    void updateByBlogLike(Integer cut, Integer id);
+
+    List<Blog> selectAllBlogLike();
+
+    List<Blog> selectByBlogLikeName(String s);
 }
