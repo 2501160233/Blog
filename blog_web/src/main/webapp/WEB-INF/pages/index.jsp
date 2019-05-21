@@ -35,32 +35,33 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-                <c:forEach items="${blog}" var="blog">
+                <c:forEach items="${hotBeans}" var="hotBean">
                     <div class="news-list">
                         <div class="news-list-item clearfix ani1">
                             <div class="col-xs-4">
-                                <c:if test="${blog.image.indexOf('.')>=0}">
-                                    <img src="/image/${blog.image}" img-fluid class="animate1">
+                                <c:if test="${hotBean.blog_image.indexOf('.')>=0}">
+                                    <img src="/image/${hotBean.blog_image}" img-fluid class="animate1">
                                 </c:if>
                                 <c:if test="${blog.image.indexOf('.')<0}">
                                     <img src="/img/1.jpg" img-fluid class="animate1">
                                 </c:if>
                             </div>
-                            <div class="col-xs-8">
-                                <a href="/blog/content/${blog.blog_id}">
-                                    <p class="title"> ${blog.blog_title}</p>
+                            <div class="col-xs-8" id="news">
+                                <a href="/blog/content/${hotBean.blog_id}">
+                                    <p class="title"> ${hotBean.blog_title}</p>
                                 </a>
-                                <article class="article">${blog.blog_min}
+                                <article class="article">${hotBean.blog_min}
                                 </article>
                                 <div class="info">
-                                    <span><i class="fa fa-heart"></i>&nbsp;&nbsp;赞</span>
-                                    <span><i class="fa fa-comment"></i>&nbsp;&nbsp;25评论</span>
-                                    <span>10分钟前</span>
+                                    <span><i class="fa fa-heart"></i>&nbsp;&nbsp;${hotBean.blog_like}赞</span>
+                                    <span><i class="fa fa-comment"></i>&nbsp;&nbsp;${hotBean.blog_comm}评论</span>
+                                    <span>${hotBean.blog_time}发布</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
+                <a href="/blog/select" style="font-size: 16px; color: red">换一批</a>
             </div>
         </div>
         <div class="col-sm-4">
@@ -77,19 +78,17 @@
             </div>
             <div class="hotBlog">
                 <p>热门推荐</p>
-                <ul>
-                    <li><span style="background-color: #dc143c;">1</span><a href="#">开发个小程序大概要多少钱</a></li>
-                    <li><span style="background-color: #ff8140;">2</span><a href="#">zblog批量删除mysql数据库里的评论</a></li>
-                    <li><span style="background-color: green;">3</span><a href="#">合买主题有没有售后</a></li>
-                    <li><span style="background-color: #999999;">4</span><a href="#">关于锦鲤主题的公告功能详解</a></li>
-                    <li><span style="background-color: #999999;">6</span><a href="#">聊聊网站启用SSL后让PCIDSS合规</a></li>
-                    <li><span style="background-color: #999999;">7</span><a href="#">宝塔控制面板怎么屏蔽IP地址访问</a></li>
-                    <li><span style="background-color: #999999;">8</span><a href="#">Windows7倒计时2020年将停止</a></li>
-                    <li><span style="background-color: #999999;">9</span><a href="#">PHP常见问题答疑</a></li>
+                <%-----------------------------------%>
+                    <ul id="hotBlog_ul">
+                <c:forEach items="${blogs}" var="blog" varStatus="idxStatus" begin="1">
+                        <li>
+                            <span style="background-color: #999999">${idxStatus.index}</span>
+                            <a href="/blog/content/${blog.blog_id}">${blog.blog_title}</a>
+                        </li>
+                </c:forEach>
                 </ul>
+                <%-------------------------------------------%>
             </div>
-
-
         </div>
     </div>
 </div>
@@ -122,7 +121,7 @@
     </div>
 </div>
 <div class="foot">
-    Copyright © 极简博客 丨17002430号 丨 36042102000137
+    younuo © 极简博客 丨17002430号 丨 36042102000137
 </div>
 
 <script src="../../js/index.js"></script>
