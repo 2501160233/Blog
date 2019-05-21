@@ -35,12 +35,12 @@ $(function () {
             var _weekStr = '';
 
             this.$calendar_today.show();
-            //----------------------------------------------------------------
+
             this.$calendar_today
                 .css({left: offset_l-40 , top: offset_t-115})
                 .stop()
                 .animate({left: offset_l-65 , top: offset_t-115, opacity: 1});
-          //----------------------------------------------------------------
+
             switch(_week) {
                 case 0:
                     _weekStr = '星期日';
